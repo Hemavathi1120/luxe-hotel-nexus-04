@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -21,6 +22,7 @@ import { Booking, Guest, Room } from '@/types/hotel';
 import { format } from 'date-fns';
 
 const AdminDashboard = () => {
+  const navigate = useNavigate();
   const [bookings, setBookings] = useState<Booking[]>([]);
   const [guests, setGuests] = useState<Guest[]>([]);
   const [rooms, setRooms] = useState<Room[]>([]);
@@ -162,7 +164,7 @@ const AdminDashboard = () => {
         <Card className="lg:col-span-2">
           <CardHeader className="flex flex-row items-center justify-between">
             <CardTitle>Recent Bookings</CardTitle>
-            <Button variant="outline" size="sm">
+            <Button variant="outline" size="sm" onClick={() => navigate('/admin/bookings')}>
               View All
             </Button>
           </CardHeader>
@@ -219,11 +221,11 @@ const AdminDashboard = () => {
               ))}
               <div className="pt-4 border-t">
                 <div className="grid grid-cols-2 gap-4">
-                  <Button size="sm" className="w-full">
+                  <Button size="sm" className="w-full" onClick={() => navigate('/admin/bookings')}>
                     <CheckCircle className="w-4 h-4 mr-2" />
                     Check-in
                   </Button>
-                  <Button variant="outline" size="sm" className="w-full">
+                  <Button variant="outline" size="sm" className="w-full" onClick={() => navigate('/admin/rooms')}>
                     <AlertCircle className="w-4 h-4 mr-2" />
                     Maintenance
                   </Button>
@@ -250,6 +252,7 @@ const AdminDashboard = () => {
               <Button 
                 variant="luxury" 
                 className="w-full h-32 flex flex-col items-center justify-center space-y-4 relative overflow-hidden"
+                onClick={() => navigate('/admin/bookings')}
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <div className="relative z-10 flex flex-col items-center space-y-3">
@@ -272,6 +275,7 @@ const AdminDashboard = () => {
               <Button 
                 variant="luxury-outline" 
                 className="w-full h-32 flex flex-col items-center justify-center space-y-4 relative overflow-hidden"
+                onClick={() => navigate('/admin/rooms')}
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <div className="relative z-10 flex flex-col items-center space-y-3">
@@ -294,6 +298,7 @@ const AdminDashboard = () => {
               <Button 
                 variant="luxury-outline" 
                 className="w-full h-32 flex flex-col items-center justify-center space-y-4 relative overflow-hidden"
+                onClick={() => navigate('/admin/guests')}
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <div className="relative z-10 flex flex-col items-center space-y-3">
@@ -316,6 +321,7 @@ const AdminDashboard = () => {
               <Button 
                 variant="luxury-outline" 
                 className="w-full h-32 flex flex-col items-center justify-center space-y-4 relative overflow-hidden"
+                onClick={() => navigate('/admin/reports')}
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <div className="relative z-10 flex flex-col items-center space-y-3">
